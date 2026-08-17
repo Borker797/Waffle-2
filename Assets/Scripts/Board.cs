@@ -25,16 +25,43 @@ public class Board : MonoBehaviour
     }
 
    private void Update()
-   {
-     for ( int i = 0; i < SUPPORTED_KEYS.Length; i++ )
-     {
-        if (Keyboard.current[SUPPORTED_KEYS[i]].wasPressedThisFrame)
+   {    
+
+        Row currentRow = rows[rowIndex]; 
+    
+    if (Keyboard.current[Key.Backspace].wasPressedThisFrame)
+    {
+        columnIndex = Mathf.Max(columnIndex - 1, 0);
+        currentRow.tiles[columnIndex].SetLetter('\0');
+    }
+
+    
+    else if (columnIndex >= currentRow.tiles.Length)
+    {
+        if (Keyboard.current[Key.Enter].wasPressedThisFrame)
         {
-            rows[rowIndex].tiles[columnIndex].SetLetter((char)('A' + i));
-            columnIndex++;
-            break;
+            SubmitRow(currentRow);
         }
-     }
+    } 
+    else
+    {
+        for ( int i = 0; i < SUPPORTED_KEYS.Length; i++ )
+         {
+            if (Keyboard.current[SUPPORTED_KEYS[i]].wasPressedThisFrame)
+            {
+                currentRow.tiles[columnIndex].SetLetter((char)('A' + i));
+                columnIndex++;
+                break;
+            }
+        }
+    }
+
+     
+   }
+
+   private void SubmitRow(Row row)
+   {
+        ///..
    }
 }
   
