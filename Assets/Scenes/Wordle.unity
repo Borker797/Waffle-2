@@ -1072,8 +1072,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2132742815033816523, guid: 344b5b482df17400eb44c8c4db1fbe0e, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 2132742815033816523, guid: 344b5b482df17400eb44c8c4db1fbe0e, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+    - target: {fileID: 2132742815033816523, guid: 344b5b482df17400eb44c8c4db1fbe0e, type: 3}
       propertyPath: m_TextStyleHashCode
       value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132742815033816523, guid: 344b5b482df17400eb44c8c4db1fbe0e, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2986074148679967740, guid: 344b5b482df17400eb44c8c4db1fbe0e, type: 3}
       propertyPath: m_Name
@@ -1255,6 +1267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1786955233}
   - component: {fileID: 1786955234}
+  - component: {fileID: 1786955235}
   m_Layer: 5
   m_Name: Board
   m_TagString: Untagged
@@ -1313,6 +1326,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1786955235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786955232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e300d0dcc349943f49e9a421554b9605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Board
 --- !u!1001 &2073322248
 PrefabInstance:
   m_ObjectHideFlags: 0

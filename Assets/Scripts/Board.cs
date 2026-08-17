@@ -30,7 +30,7 @@ public class Board : MonoBehaviour
      {
         if (Keyboard.current[SUPPORTED_KEYS[i]].wasPressedThisFrame)
         {
-            rows[rowIndex].tiles[columnIndex].SetLetter((char)SUPPORTED_KEYS[i]);
+            rows[rowIndex].tiles[columnIndex].SetLetter((char)('A' + i));
             columnIndex++;
             break;
         }
