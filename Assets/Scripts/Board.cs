@@ -125,6 +125,23 @@ public class Board : MonoBehaviour
         for (int i = 0; i < row.tiles.Length; i++)
         {
             Tile tile = row.tiles[i];
+
+            if (tile.letter == word[i])
+            {
+                //correct state
+            } else if (word.Contains(tile.letter)) {
+                // wrong spot
+            } else{
+                
+            }
+        }
+        rowIndex++;
+        columnIndex = 0;
+
+        if (rowIndex >= rows.Length)
+        {
+            enabled = false;
         }
     }
+
 }
