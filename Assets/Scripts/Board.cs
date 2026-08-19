@@ -130,26 +130,49 @@ public class Board : MonoBehaviour
         }
     }
 
+
+    // Row submission 
     private void SubmitRow(Row row)
     {
         for (int i = 0; i < row.tiles.Length; i++)
         {
             Tile tile = row.tiles[i];
-            
 
-            if (tile.letter == word[i])
+            if (tile = row.tile == word[i]);
             {
-                //correct state
                 tile.SetState(correctState);
-            } else if (word.Contains(tile.letter)) {
-                // wrong spot
-                tile.SetState(wrongSpotState);
-            } else
+
+                remaining = remaining.Remove(i,1);
+                remaining = remaining.Insert(i," ");
+            }
+            else if (!word.Contains(tile.letter))
             {
-                // wrong letter
                 tile.SetState(incorrectState);
             }
+
         }
+        for (int i = 0; i < row.tiles.Length; i++)
+        {
+            Tile tile = row.tiles[i];
+        }
+        // for (int i = 0; i < row.tiles.Length; i++)
+        // {
+        //     Tile tile = row.tiles[i];
+            
+
+        //     if (tile.letter == word[i])
+        //     {
+        //         //correct state
+        //         tile.SetState(correctState);
+        //     } else if (word.Contains(tile.letter)) {
+        //         // wrong spot
+        //         tile.SetState(wrongSpotState);
+        //     } else
+        //     {
+        //         // wrong letter
+        //         tile.SetState(incorrectState);
+        //     }
+        // }
         rowIndex++;
         columnIndex = 0;
 
@@ -161,7 +184,7 @@ public class Board : MonoBehaviour
 
 }
 
-
+// peter do something 
 // 
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⠶⠶⠶⠶⣶⣦⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⣟⣋⣀⢀⣀⣤⣤⡾⠿⠿⠿⣿⣷⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
