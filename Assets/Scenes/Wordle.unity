@@ -1338,6 +1338,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e300d0dcc349943f49e9a421554b9605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Board
+  emptyState:
+    fillColor: {r: 0, g: 0, b: 0, a: 0}
+    outlineColor: {r: 0.23137255, g: 0.23137255, b: 0.23921569, a: 0}
+  occupiedState:
+    fillColor: {r: 0.9811321, g: 0.9633322, b: 0.86543256, a: 1}
+    outlineColor: {r: 0, g: 0, b: 0, a: 0}
+  correctState:
+    fillColor: {r: 0.5647059, g: 0.6627451, b: 0.34901962, a: 1}
+    outlineColor: {r: 0.5647059, g: 0.6627451, b: 0.34901962, a: 0}
+  wrongSpotState:
+    fillColor: {r: 0.9137255, g: 0.72156864, b: 0.44705883, a: 1}
+    outlineColor: {r: 0.9137255, g: 0.72156864, b: 0.44705883, a: 0}
+  incorrectState:
+    fillColor: {r: 0.6509804, g: 0.23921569, b: 0.2509804, a: 1}
+    outlineColor: {r: 0.6509804, g: 0.23921569, b: 0.2509804, a: 0}
 --- !u!1001 &2073322248
 PrefabInstance:
   m_ObjectHideFlags: 0

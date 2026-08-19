@@ -30,6 +30,14 @@ public class Board : MonoBehaviour
 
     private string word;
 
+
+    [Header("States")]
+    public Tile.State emptyState;
+    public Tile.State occupiedState;
+    public Tile.State correctState;
+    public Tile.State wrongSpotState;
+    public Tile.State incorrectState;  
+
     private void Awake()
     {
         rows = GetComponentsInChildren<Row>();
@@ -97,6 +105,7 @@ public class Board : MonoBehaviour
         {
             columnIndex = Mathf.Max(columnIndex - 1, 0);
             currentRow.tiles[columnIndex].SetLetter('\0');
+            currentRow.tiles[columnIndex].SetState(emptyState);
         }
         else if (columnIndex >= currentRow.tiles.Length)
         {
@@ -112,7 +121,8 @@ public class Board : MonoBehaviour
             {
                 if (Keyboard.current[SUPPORTED_KEYS[i]].wasPressedThisFrame)
                 {
-                    currentRow.tiles[columnIndex].SetLetter((char)('A' + i));
+                    currentRow.tiles[columnIndex].SetLetter((char)('a' + i));
+                    currentRow.tiles[columnIndex].SetState(occupiedState);
                     columnIndex++;
                     break;
                 }
@@ -125,14 +135,19 @@ public class Board : MonoBehaviour
         for (int i = 0; i < row.tiles.Length; i++)
         {
             Tile tile = row.tiles[i];
+            
 
             if (tile.letter == word[i])
             {
                 //correct state
+                tile.SetState(correctState);
             } else if (word.Contains(tile.letter)) {
                 // wrong spot
-            } else{
-                
+                tile.SetState(wrongSpotState);
+            } else
+            {
+                // wrong letter
+                tile.SetState(incorrectState);
             }
         }
         rowIndex++;
