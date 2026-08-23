@@ -134,11 +134,13 @@ public class Board : MonoBehaviour
     // Row submission 
     private void SubmitRow(Row row)
     {
+
+        string remaining = word;
         for (int i = 0; i < row.tiles.Length; i++)
         {
             Tile tile = row.tiles[i];
 
-            if (tile = row.tile == word[i]);
+            if (tile.letter == word[i])
             {
                 tile.SetState(correctState);
 
@@ -151,9 +153,26 @@ public class Board : MonoBehaviour
             }
 
         }
+
         for (int i = 0; i < row.tiles.Length; i++)
         {
             Tile tile = row.tiles[i];
+
+            if (tile.state != correctState && tile.state != incorrectState)
+            {
+                if (remaining.Contains(tile.letter))
+                {
+                    tile.SetState(wrongSpotState);
+
+                    int index = remaining.IndexOf(tile.letter);
+                    remaining = remaining.Remove(i, 1);
+                    remaining = remaining.Insert(index, "");
+                }
+                else
+                {
+                    tile.SetState(incorrectState);
+                }
+            }
         }
         // for (int i = 0; i < row.tiles.Length; i++)
         // {
