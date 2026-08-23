@@ -38,6 +38,10 @@ public class Board : MonoBehaviour
     public Tile.State wrongSpotState;
     public Tile.State incorrectState;  
 
+    [Header("UI")]
+    public Button  newWordButton;
+    public Button  tryAgainButton;
+
     private void Awake()
     {
         rows = GetComponentsInChildren<Row>();
@@ -47,9 +51,22 @@ public class Board : MonoBehaviour
     private void Start()
     {
         LoadData();
-        SetRandomWord();
+        NewGame();
     }
 
+    public void NewGame()
+    {
+        ClearBoard();
+       SetRandomWord();
+
+       enabled = true;
+    }
+
+    public void TryAgain()
+    {
+        ClearBoard;
+        enabled = true;
+    }
     private void LoadData()
     {
         var wordlesText = Resources.Load<TextAsset>("wordles");
@@ -174,31 +191,61 @@ public class Board : MonoBehaviour
                 }
             }
         }
-        // for (int i = 0; i < row.tiles.Length; i++)
-        // {
-        //     Tile tile = row.tiles[i];
-            
-
-        //     if (tile.letter == word[i])
-        //     {
-        //         //correct state
-        //         tile.SetState(correctState);
-        //     } else if (word.Contains(tile.letter)) {
-        //         // wrong spot
-        //         tile.SetState(wrongSpotState);
-        //     } else
-        //     {
-        //         // wrong letter
-        //         tile.SetState(incorrectState);
-        //     }
-        // }
+       
+        if (HasWon(row))
+        {
+            enabled= false;
+        }
         rowIndex++;
         columnIndex = 0;
 
         if (rowIndex >= rows.Length)
         {
             enabled = false;
+
         }
+
+    }
+
+    private void ClearBoard()
+    {
+        for (int row = 0; row < rows.Length ; i++)
+        {
+            for (int col = 0; col < rows[row].tiles.Length; col++)
+            {
+                rows[row].tiles[col].SetLetter('\0');
+                rows[row].tiles[col].SetState(emptyState);
+            }
+        }
+
+        rowIndex = 0;
+        columnIndex = 0;
+    }
+
+
+    private bool HasWon(Row row)
+    {
+        for (int i = 0; i < row.tiles.Length; i++)
+        {
+            if (row.tiles[i].state != correctState)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private void OnEnable()
+    {
+        tryAgainButton.gameObject.SetActive(false);
+        newWordButton.gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        tryAgainButton.gameObject.SetActive(true);
+        newWordButton.gameObject.SetActive(true);
     }
 
 }
